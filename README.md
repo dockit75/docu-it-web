@@ -1,11 +1,11 @@
 # DocuIt Admin
 
-Welcome to the **DocuIt Admin** project. This project aims to provide administrative functionalities for managing and overseeing document-related operations.
+Welcome to the **DocuIt Admin**. This aims to provide administrative functionalities for managing and overseeing document-related operations.
 
 ## Features
 
-- Category management: Add, update, and remove categories.
-- Analytics: Gain insights from the dashboard on document uploaded and user additions.
+- Category management: Add and update categories.
+- Analytics: Gain insights from the dashboard on no. of documents uploaded and user additions count.
 
 ## Getting Started
 
@@ -15,13 +15,14 @@ Ensure you have the following installed on your system:
 
 - Node.js (version 14.x or newer)
 - npm (usually comes with Node.js)
+- React (version 17.x or newer)
 
 ### Installation
 
 1. Clone the repository:
     ```bash
     git clone https://github.com/dockit75/docu-it-web.git
-    cd docuit-admin
+    cd docu-it-web
     ```
 
 2. Install dependencies:
