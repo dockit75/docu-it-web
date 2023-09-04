@@ -1,6 +1,4 @@
-
-
-// DocuIt React base styles
+// DocuIt React Base Styles
 import colors from "assets/theme/base/colors";
 
 // DocuIt React helper functions

@@ -1,5 +1,3 @@
-
-
 /**
  * The base colors for the DocuIt React.
  * You can add new color using this file.

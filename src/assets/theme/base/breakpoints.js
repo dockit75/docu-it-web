@@ -1,5 +1,3 @@
-
-
 /**
  * The base breakpoints for the DocuIt React.
  * You can add new breakpoints using this file.

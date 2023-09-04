@@ -1,6 +1,4 @@
-
-
-// DocuIt React base styles
+// DocuIt React Base Styles
 import breakpoints from "assets/theme/base/breakpoints";
 
 // DocuIt React helper functions

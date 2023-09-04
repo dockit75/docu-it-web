@@ -1,5 +1,3 @@
-
-
 /**
  * The base box-shadow styles for the DocuIt React.
  * You can add new box-shadow using this file.

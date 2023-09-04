@@ -1,5 +1,3 @@
-
-
 // DocuIt React base styles
 import typography from "assets/theme/base/typography";
 

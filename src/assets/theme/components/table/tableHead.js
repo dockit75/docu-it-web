@@ -1,6 +1,4 @@
-
-
-// DocuIt React base styles
+// DocuIt React Base Styles
 import borders from "assets/theme/base/borders";
 
 // DocuIt React helper functions

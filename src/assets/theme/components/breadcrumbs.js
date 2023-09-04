@@ -1,6 +1,4 @@
-
-
-// DocuIt React base styles
+// DocuIt React Base Styles
 import colors from "assets/theme/base/colors";
 import typography from "assets/theme/base/typography";
 

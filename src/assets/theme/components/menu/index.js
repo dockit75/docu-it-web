@@ -1,6 +1,4 @@
-
-
-// DocuIt React base styles
+// DocuIt React Base Styles
 import boxShadows from "assets/theme/base/boxShadows";
 import typography from "assets/theme/base/typography";
 import colors from "assets/theme/base/colors";

@@ -1,5 +1,3 @@
-
-
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
@@ -10,11 +8,7 @@ import Grid from "@mui/material/Grid";
 import MDBox from "components/MDBox";
 
 // DocuIt React example components
-import DefaultNavbar from "../../../../examples/Navbars/DefaultNavbar";
 import PageLayout from "examples/LayoutContainers/PageLayout";
-
-// Authentication pages components
-import Footer from "layouts/authentication/components/Footer";
 
 function BasicLayout({ image, children }) {
   return (

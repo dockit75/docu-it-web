@@ -1,5 +1,3 @@
-
-
 // DocuIt React Base Styles
 import colors from "assets/theme/base/colors";
 

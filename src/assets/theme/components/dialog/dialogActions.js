@@ -1,5 +1,3 @@
-
-
 // DocuIt React helper functions
 import pxToRem from "assets/theme/functions/pxToRem";
 
