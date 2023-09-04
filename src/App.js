@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 
 // react-router components
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
@@ -17,7 +17,7 @@ import theme from "assets/theme";
 import routes from "routes";
 
 // DocuIt React contexts
-import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "./context/index";
+import { useMaterialUIController, setMiniSidenav } from "./context/index";
 
 // Images
 import brandWhite from "assets/images/logo_dockit.png";
