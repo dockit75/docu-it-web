@@ -36,6 +36,14 @@ export const categoryList = async () => {
     }
     return await axiosInstance.get(`category/listCategories`)
 }
+export const editCategory = async (param) => {
+    const token = localStorage.getItem('docuItToken')
+    if (token && axiosInstance.defaults.headers['Authorization'] !== `Bearer ${token}`) {
+        axiosInstance.defaults.headers['Authorization'] = `Bearer ${token}`;
+    }
+    return await axiosInstance.put(`category/editCategory`, param)
+}
+
 
 export const addCategory = async (params) => {
     const token = localStorage.getItem('docuItToken')

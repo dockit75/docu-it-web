@@ -30,7 +30,7 @@ import corona from "assets/images/corona.avif";
 
 
 import { useEffect, useState } from "react";
-import { addCategory, categoryList} from "../../services/index";
+import { addCategory, categoryList,editCategory} from "../../services/index";
 // import projectsTableData from "layouts/tables/data/projectsTableData";
 
 function getRandomElement(arr) {
@@ -85,7 +85,17 @@ function Tables() {
     }
   ]
   const updateCategory = (e) => {
-    setTempRowData(prevData => ({ ...prevData, categoryName: e.target.value }));
+    const inputValue = e.target.value;
+    
+    // Check if the updated category name is valid (up to 50 letters and only alphabets)
+    const isValidCategoryName = /^[A-Za-z\s]{1,50}$/.test(inputValue);
+  
+    if (isValidCategoryName) {
+      setTempRowData((prevData) => ({ ...prevData, categoryName: inputValue }));
+    } else {
+      // Handle invalid category name (e.g., show an error message)
+      console.error("Invalid category name. It should be up to 50 letters and only alphabets.");
+    }
   };
 
   const [tempRowData, setTempRowData] = useState({});
@@ -118,8 +128,15 @@ function Tables() {
         categoryName: tempRowData?.categoryName,    
         description: tempRowData?.categoryName
     }
+    const param = {
+      categoryId: id, 
+      categoryName: tempRowData?.categoryName,
+      description: tempRowData?.categoryName
+    }
     if(tempRowData?.isNew){
-      // addCategory(params)
+      addCategory(params)
+    }else if(tempRowData.categoryName){
+     editCategory(param)
     }
       setRows(updatedRows);
       setTempRowData({});

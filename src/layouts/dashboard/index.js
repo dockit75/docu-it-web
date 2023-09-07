@@ -41,7 +41,7 @@ function Dashboard() {
                 icon="groups"
                 heading=" Total Users"
                 // title="Active Users"
-                count={data.totalActiveUsers}
+                count={data.totalActiveUsers + data.totalInActiveUsers}
               />
             </MDBox>
           </Grid>
