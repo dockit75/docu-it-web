@@ -18,7 +18,7 @@ export default function useProjectsTableData(rows, updateCategory, handleSave, h
   const Category = ({ id, image, name }) => (
     <MDBox display="flex" alignItems="center" lineHeight={1}>
       <MDAvatar src={image} name={name} size="sm" variant="rounded" />
-      <Input autoFocus={editingId === id} required={true} disableUnderline={editingId !== id} readOnly={editingId !== id} value={editingId === id ? tempRowData?.categoryName : name} sx={{ marginLeft: 1, fontWeight: 'bold',width:'350px' }} onChange={updateCategory} />
+      <Input autoFocus={editingId === id} required={true} disableUnderline={editingId !== id} readOnly={editingId !== id} value={editingId === id ? tempRowData?.categoryName : name} sx={{ marginLeft: 1, fontWeight: 'bold', width:'350px' }} onChange={updateCategory} />
     </MDBox>
   )
 

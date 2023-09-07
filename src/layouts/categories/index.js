@@ -30,8 +30,7 @@ import corona from "assets/images/corona.avif";
 
 
 import { useEffect, useState } from "react";
-import { addCategory, categoryList,editCategory} from "../../services/index";
-// import projectsTableData from "layouts/tables/data/projectsTableData";
+import { addCategory, categoryList, editCategory } from "../../services/index";
 
 function getRandomElement(arr) {
   const randomIndex = Math.floor(Math.random() * arr.length);
@@ -86,10 +85,10 @@ function Tables() {
   ]
   const updateCategory = (e) => {
     const inputValue = e.target.value;
-    
+
     // Check if the updated category name is valid (up to 50 letters and only alphabets)
     const isValidCategoryName = /^[A-Za-z\s]{1,50}$/.test(inputValue);
-  
+
     if (isValidCategoryName) {
       setTempRowData((prevData) => ({ ...prevData, categoryName: inputValue }));
     } else {
@@ -101,7 +100,7 @@ function Tables() {
   const [tempRowData, setTempRowData] = useState({});
   const [editingId, setEditingId] = useState(null);
   const [rows, setRows] = useState()
-
+  const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
     (async () => await categoryList().then((res) => {
@@ -116,7 +115,6 @@ function Tables() {
   }, [])
 
   const handleSave = (id) => {
-    console.log('tempRowData?.categoryName', tempRowData?.categoryName?.trim()?.length , tempRowData?.isNew)
     if (tempRowData?.categoryName?.trim()?.length) {
       const updatedRows = rows.map(row => {
         if (row.id === id && (row.categoryName !== tempRowData?.categoryName)) {
@@ -125,19 +123,19 @@ function Tables() {
         return row;
       });
       const params = {
-        categoryName: tempRowData?.categoryName,    
+        categoryName: tempRowData?.categoryName,
         description: tempRowData?.categoryName
-    }
-    const param = {
-      categoryId: id, 
-      categoryName: tempRowData?.categoryName,
-      description: tempRowData?.categoryName
-    }
-    if(tempRowData?.isNew){
-      addCategory(params)
-    }else if(tempRowData.categoryName){
-     editCategory(param)
-    }
+      }
+      const param = {
+        categoryId: id,
+        categoryName: tempRowData?.categoryName,
+        description: tempRowData?.categoryName
+      }
+      if (tempRowData?.isNew) {
+        addCategory(params)
+      } else if (tempRowData.categoryName) {
+        editCategory(param)
+      }
       setRows(updatedRows);
       setTempRowData({});
     } else {
@@ -162,6 +160,7 @@ function Tables() {
   };
 
   const handleAddCategory = () => {
+    setCurrentPage(0)
     const newRow = {
       id: Date.now(),  // using a timestamp as a unique ID; consider better methods in production
       categoryName: "",
@@ -170,7 +169,7 @@ function Tables() {
       isNew: true
     };
 
-    setRows(prevRows => [ newRow, ...prevRows,]);
+    setRows(prevRows => [newRow, ...prevRows,]);
     setEditingId(newRow.id);
     setTempRowData(newRow)
   };
@@ -209,8 +208,10 @@ function Tables() {
                   table={{ columns: pColumns, rows: pRows }}
                   isSorted={false}
                   entriesPerPage={false}
-                  showTotalEntries={false}
+                  showTotalEntries={true}
                   noEndBorder
+                  currentPage={currentPage}
+                  setCurrentPage={setCurrentPage}
                 />
               </MDBox>
             </Card>
