@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect} from "react";
 
 // react-router-dom components
 import { useNavigate } from "react-router-dom";
@@ -24,6 +24,7 @@ import * as yup from 'yup'
 import { useFormik } from "formik";
 
 import './signIn.css'
+import { useAuth } from "../../../context/AuthContext";
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('*Invalid email address').required('*Email is required'),
@@ -32,6 +33,8 @@ const validationSchema = yup.object().shape({
 
 
 function Basic() {
+
+  const { loginSuccess, isAuthenticated} = useAuth()
 
   const formik = useFormik({
     initialValues: {
@@ -44,6 +47,7 @@ function Basic() {
       login(values)
         .then(({ data,response }) => {
           if(data){
+            loginSuccess()
             localStorage.setItem('docuItToken', data?.response?.token);
             navigate('/dashboard');
           }else{
@@ -56,11 +60,14 @@ function Basic() {
     }
   });
 
-  useEffect(() => {
-    logout()
-  }, [])
-
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if(isAuthenticated){
+      // goback if logged In
+      navigate(-1);
+    }
+  }, [])
 
 
   return (

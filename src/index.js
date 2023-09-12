@@ -5,14 +5,17 @@ import App from "./App";
 
 // DocuIt React Context Provider
 import { MaterialUIControllerProvider } from "context";
+import { AuthProvider } from "context/AuthContext";
 
 const container = document.getElementById("app");
 const root = createRoot(container);
 
 root.render(
-  <BrowserRouter>
-    <MaterialUIControllerProvider>
-      <App />
-    </MaterialUIControllerProvider>
-  </BrowserRouter>
+  <AuthProvider>
+    <BrowserRouter>
+      <MaterialUIControllerProvider>
+        <App />
+      </MaterialUIControllerProvider>
+    </BrowserRouter>
+  </AuthProvider>
 );

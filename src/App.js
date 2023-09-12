@@ -21,9 +21,11 @@ import { useMaterialUIController, setMiniSidenav } from "./context/index";
 
 // Images
 import brandWhite from "assets/images/logo_dockit.png";
-
+import { useAuth } from "context/AuthContext";
+import SignIn from './layouts/authentication/sign-in'
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
+  const { isAuthenticated } = useAuth();
   const {
     miniSidenav,
     layout,
@@ -47,7 +49,6 @@ export default function App() {
       setOnMouseEnter(false);
     }
   };
-
   // Setting page scroll to 0 when changing the route
   useEffect(() => {
     document.documentElement.scrollTop = 0;
@@ -61,7 +62,8 @@ export default function App() {
       }
 
       if (route.route) {
-        return <Route exact path={route.route} element={route.component} key={route.key} />;
+        return isAuthenticated ? <Route exact path={route.route} element={route.component} key={route.key} />
+        : <Route path="/signIn" element={<SignIn />} key='signIn' />;
       }
 
       return null;
@@ -70,7 +72,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {layout === "dashboard" && (
+      {layout === "dashboard" && isAuthenticated && (
         <>
           <Sidenav
             color={sidenavColor}
@@ -83,7 +85,7 @@ export default function App() {
         </>
       )}
       <Routes>
-        {getRoutes(routes)}
+        {getRoutes(routes, isAuthenticated)}
         <Route path="*" element={<Navigate to="/signIn" />} />
       </Routes>
     </ThemeProvider>

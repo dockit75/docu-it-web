@@ -12,6 +12,7 @@ const axiosInstance = axios.create({
 
 const axiosError = (error) => {
     if (error?.response?.status === 403) {
+        localStorage.clear()
         window.location.href = '/signIn'
     } else{
         return error
