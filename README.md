@@ -37,6 +37,30 @@ Ensure you have the following installed on your system:
 
 The application should now be running on `http://localhost:3000`.
 
+### Building for Production
+
+1. Generate a production-ready build:
+
+    ```bash
+    npm run build
+    ```
+
+2. To view your production-ready app locally, you can serve the build directory:
+
+    - First, if you haven't already, install the serve tool:
+
+    ```bash
+    npm install -g serve
+    ```
+
+    - Next, serve your build:
+
+    ```bash
+    serve -s build
+    ```
+
+Your production-ready application will now be available at http://localhost:5000 or a similar local address.
+
 ## Usage
 
 Navigate to the dashboard to overview the document analytics. You can also access category management for account-level operations.
