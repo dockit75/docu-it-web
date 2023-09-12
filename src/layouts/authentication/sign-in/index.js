@@ -27,7 +27,7 @@ import './signIn.css'
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('*Invalid email address').required('*Email is required'),
-  password: yup.string().required('*Password is required').min(8, '*Password must be at least 8 characters'),
+  password: yup.string().required('*Password is required'),
 });
 
 
@@ -42,12 +42,16 @@ function Basic() {
     onSubmit: (values) => {
       formik.setStatus(false);
       login(values)
-        .then(({ data }) => {
-          localStorage.setItem('docuItToken', data?.response?.token);
-          navigate('/dashboard');
+        .then(({ data,response }) => {
+          if(data){
+            localStorage.setItem('docuItToken', data?.response?.token);
+            navigate('/dashboard');
+          }else{
+            formik.setStatus('*Incorrect email or password*')
+          }
         })
         .catch(() => {
-          formik.setStatus('*Incorrect email or password');
+          formik.setStatus('*Incorrect email or password*');
         });
     }
   });
@@ -65,6 +69,7 @@ function Basic() {
         <MDTypography variant="h4" fontWeight="medium" color="docuit" m={'auto'} pt={4}>
           <img src={brandWhite} alt="Dockit Logo" style={{ width: '40px', height: 'auto', marginBottom: '-14px' }} /> Login
         </MDTypography>
+        {formik.status && <p style={{ color: 'red', textAlign: 'center', fontSize: 13,marginTop:'20px' }}>{formik.status}</p>}
         <MDBox pt={4} pb={3} px={3}>
           <form onSubmit={formik.handleSubmit}>
             <MDBox mb={2}>
@@ -134,8 +139,6 @@ function Basic() {
               >
                 sign in
               </MDButton>
-
-              {formik.status && <p style={{ color: 'red', textAlign: 'center', fontSize: 13 }}>{formik.status}</p>}
             </MDBox>
           </form>
         </MDBox>

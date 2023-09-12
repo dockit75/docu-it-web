@@ -13,6 +13,8 @@ const axiosInstance = axios.create({
 const axiosError = (error) => {
     if (error?.response?.status === 403) {
         window.location.href = '/signIn'
+    } else{
+        return error
     }
 }
 axiosInstance.interceptors.response.use(response => response, error => axiosError(error))
@@ -26,7 +28,7 @@ export const dashboard = async () => {
     if (token && axiosInstance.defaults.headers['Authorization'] !== `Bearer ${token}`) {
         axiosInstance.defaults.headers['Authorization'] = `Bearer ${token}`;
     }
-    return await axiosInstance.get(`dashboard/geUserAndDocuments`)
+    return await axiosInstance.get(`dashboard/dashboardDetails`)
 }
 
 export const categoryList = async () => {
