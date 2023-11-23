@@ -2,6 +2,7 @@
 import Dashboard from "./layouts/dashboard";
 import Categories from "./layouts/categories";
 import SignIn from "./layouts/authentication/sign-in";
+import Documents from "./layouts/Document/Documents";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -23,6 +24,15 @@ const routes = [
     route: "/categories",
     component: <Categories />,
   },
+
+  {
+    type: "collapse",
+    name: "Document",
+    key: "document",
+    icon: <Icon fontSize="small">Documents</Icon>,
+    route: "/document",
+    component: <Documents /> ,
+  },
   {
     type: "collapse",
     name: "Logout",
@@ -31,6 +41,8 @@ const routes = [
     route: "/signIn",
     component: <SignIn />,
   },
+
+
 ];
 
 export default routes;

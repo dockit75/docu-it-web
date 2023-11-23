@@ -1,0 +1,85 @@
+th,
+td {
+     padding: 15px;
+}
+
+.mdbboxfamily {
+     margin-top: 30px;
+}
+
+.btnfamilylist {
+
+     color: white !important;
+     margin-bottom: 18px !important;
+}
+
+.btn-delete {
+     color: red !important;
+}
+
+.popup {
+     position: fixed;
+     top: 40%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     background: white;
+     padding: 20px;
+     border: 1px solid #ccc;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+     z-index: 1;
+     border-radius: 10px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+}
+
+.popup-content {
+     text-align: center;
+}
+
+.overlay {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: rgba(0, 0, 0, 0.5);
+     z-index: 1;
+}
+
+.addbtn {
+     display: flex;
+     justify-content: space-between;
+}
+
+.flash-message {
+     display: flex;
+     justify-content: center;
+     color: green;
+}
+.Errorflash-message{
+     display: flex;
+     justify-content: center;
+     color: red;
+}
+
+.pop-up-input {
+     width: 250px;
+     padding: 12px;
+     border: 1px solid black;
+     border-radius: 3px;
+}
+
+.pop-input-div {
+     padding-bottom: 26px;
+}
+
+.btn-pop {
+     margin: 31px !important;
+}
+
+.pop-up-input{
+     border: none;
+     border-bottom: 2px solid linear-gradient(195deg, #49a3f1, #1A73E8);
+     padding: 4px;
+}
