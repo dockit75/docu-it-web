@@ -7,8 +7,10 @@ export const useAuth = () => {
 }
 
 export const AuthProvider = ({ children }) => {
-    const token = localStorage.getItem('docuItToken')
+    const token = localStorage.getItem('docuItToken');
     const [isAuthenticated, setIsAuthenticated] = useState(!!token);
+    const [UserData, setuserdata] = useState(null);
+
 
     const loginSuccess = async () => {
         setIsAuthenticated(true);
@@ -19,11 +21,14 @@ export const AuthProvider = ({ children }) => {
     }
 
     const value = {
+        UserData,
         isAuthenticated,
         loginSuccess,
-        logoutSuccess
-    };
+        logoutSuccess,
+        setuserdata,
 
+    };
+   
     return (
         <AuthContext.Provider value={value}>
             {children}
